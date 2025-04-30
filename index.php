@@ -9,6 +9,8 @@
     <div class="container">
         <h1>Bienvenido al Taller Restaurante</h1>
         <a href="views/categories.php" class="button">Ir a Categorías</a>
+        <a href="views/tables.php">Ir a Mesas</a>
+
     </div>
 </body>
 </html>

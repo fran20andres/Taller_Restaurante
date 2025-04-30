@@ -6,6 +6,11 @@ use mysqli;
 
 class ConexDB {
     private $conn;
+    
+    public function getConnection()
+    {
+        return $this->conn;
+    }
 
     public function __construct() {
         $this->conn = new mysqli("localhost", "root", "", "proyecto_2_db");
