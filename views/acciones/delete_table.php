@@ -9,13 +9,9 @@ use app\controllers\TablesController;
 $controller = new TablesController(); 
 $idTable = $_GET['id']; 
 
-try { 
-    $result = $controller->deleteTable($idTable); 
-    $error = !$result; 
-} catch (Exception $e) { 
-    $error = true; 
-} 
-?> 
+$result = $controller->deleteTable($idTable); 
+$error = !$result;
+?>
 
 <!DOCTYPE html> 
 <html lang="es"> 

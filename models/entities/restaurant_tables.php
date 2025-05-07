@@ -4,7 +4,7 @@ namespace app\models\entities;
 
 use app\models\drivers\ConexDB;
 
-class Table extends Entity
+class restaurant_tables extends Entity
 {
     protected $id = null;
     protected $name = "";
@@ -19,7 +19,7 @@ class Table extends Entity
         $tables = [];
         if ($resultDb && $resultDb->num_rows > 0) {
             while ($rowDb = $resultDb->fetch_assoc()) {
-                $table = new Table();
+                $table = new restaurant_tables();
                 $table->set('id', $rowDb['id']);
                 $table->set('name', $rowDb['name']);
                 $tables[] = $table;

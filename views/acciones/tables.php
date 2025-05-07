@@ -3,9 +3,8 @@ include '../models/drivers/conexDB.php';
 include '../models/entities/entity.php';
 include '../models/entities/table.php';
 
-use app\models\entities\Table;
-
-$table = new Table();
+use app\models\entities\restaurant_tables;
+$table = new restaurant_tables(); 
 $tables = $table->all();
 ?>
 

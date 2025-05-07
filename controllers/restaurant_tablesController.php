@@ -2,27 +2,26 @@
 
 namespace app\controllers;
 
-use app\models\entities\Table;
+use app\models\entities\restaurant_tables;
 
 class TablesController
 {
     public function queryAllTables()
     {
-        $table = new Table();
-        $data = $table->all();
-        return $data;
+        $table = new restaurant_tables();
+        return $table->all();
     }
 
     public function saveNewTable($request)
     {
-        $table = new Table();
+        $table = new restaurant_tables();
         $table->set('name', $request['nombreInput']);
         return $table->save();
     }
 
     public function updateTable($request)
     {
-        $table = new Table();
+        $table = new restaurant_tables();
         $table->set('id', $request['idInput']);
         $table->set('name', $request['nombreInput']);
         return $table->update();
@@ -30,8 +29,13 @@ class TablesController
 
     public function deleteTable($id)
     {
-        $table = new Table();
-        $table->set('id', $id);
-        return $table->delete();
+        try {
+            $table = new restaurant_tables();
+            $table->set('id', $id);
+            return $table->delete();
+        } catch (\Exception $e) {
+            // Aquí podrías hacer log del error si quieres
+            return false;
+        }
     }
 }
