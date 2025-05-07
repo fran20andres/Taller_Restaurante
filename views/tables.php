@@ -1,7 +1,8 @@
 <?php
 include '../models/drivers/conexDB.php';
 include '../models/entities/entity.php';
-include '../models/entities/table.php';
+include '../models/entities/restaurant_tables.php';
+
 
 use app\models\entities\restaurant_tables;
 $table = new restaurant_tables(); 

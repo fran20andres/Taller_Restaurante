@@ -2,104 +2,53 @@
 
 namespace app\models\entities;
 
-use app\models\drivers\ConexDB;
+require_once 'entity.php'; // Asegúrate que está en la misma carpeta
 
 class restaurant_tables extends Entity
 {
-    protected $id = null;
-    protected $name = "";
+    protected $table = 'tables';
+    protected $attributes = [
+        'id' => null,
+        'name' => null
+    ];
 
     public function all()
     {
-        $sql = "SELECT * FROM tables";
-        $conex = new ConexDB();
-        $conn = $conex->getConnection();
-        $resultDb = $conn->query($sql);
+        $sql = "SELECT * FROM {$this->table}";
+        $stmt = $this->conn->query($sql);
+        $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
         $tables = [];
-        if ($resultDb && $resultDb->num_rows > 0) {
-            while ($rowDb = $resultDb->fetch_assoc()) {
-                $table = new restaurant_tables();
-                $table->set('id', $rowDb['id']);
-                $table->set('name', $rowDb['name']);
-                $tables[] = $table;
-            }
+        foreach ($results as $row) {
+            $table = new self();
+            $table->set('id', $row['id']);
+            $table->set('name', $row['name']);
+            $tables[] = $table;
         }
-
-        $conex->close();
         return $tables;
     }
 
     public function save()
     {
-        $sql = "INSERT INTO tables (name) VALUES (?)";
-        $conex = new ConexDB();
-        $conn = $conex->getConnection();
-
-        $stmt = $conn->prepare($sql);
-        if (!$stmt) return false;
-
-        $stmt->bind_param("s", $this->name);
-        $result = $stmt->execute();
-
-        $stmt->close();
-        $conex->close();
-
-        return $result;
+        $sql = "INSERT INTO {$this->table} (name) VALUES (:name)";
+        $stmt = $this->conn->prepare($sql);
+        return $stmt->execute(['name' => $this->get('name')]);
     }
 
     public function update()
     {
-        $sql = "UPDATE tables SET name = ? WHERE id = ?";
-        $conex = new ConexDB();
-        $conn = $conex->getConnection();
-
-        $stmt = $conn->prepare($sql);
-        if (!$stmt) return false;
-
-        $stmt->bind_param("si", $this->name, $this->id);
-        $result = $stmt->execute();
-
-        $stmt->close();
-        $conex->close();
-
-        return $result;
+        $sql = "UPDATE {$this->table} SET name = :name WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        return $stmt->execute([
+            'name' => $this->get('name'),
+            'id' => $this->get('id')
+        ]);
     }
 
     public function delete()
     {
-        $conex = new ConexDB();
-        $conn = $conex->getConnection();
-
-        // Verificar si hay órdenes asociadas
-        $sqlCheck = "SELECT COUNT(*) as count FROM orders WHERE table_id = ?";
-        $stmtCheck = $conn->prepare($sqlCheck);
-        if (!$stmtCheck) return false;
-
-        $stmtCheck->bind_param("i", $this->id);
-        $stmtCheck->execute();
-        $resultCheck = $stmtCheck->get_result();
-        $rowCheck = $resultCheck->fetch_assoc();
-
-        if ($rowCheck['count'] > 0) {
-            $stmtCheck->close();
-            $conex->close();
-            return false; // No eliminar si hay pedidos asociados
-        }
-
-        $stmtCheck->close();
-
-        // Eliminar la mesa
-        $sqlDelete = "DELETE FROM tables WHERE id = ?";
-        $stmt = $conn->prepare($sqlDelete);
-        if (!$stmt) return false;
-
-        $stmt->bind_param("i", $this->id);
-        $result = $stmt->execute();
-
-        $stmt->close();
-        $conex->close();
-
-        return $result;
+        $sql = "DELETE FROM {$this->table} WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        return $stmt->execute(['id' => $this->get('id')]);
     }
 }
