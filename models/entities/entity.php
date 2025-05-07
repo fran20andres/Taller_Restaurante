@@ -12,7 +12,7 @@ abstract class Entity
     public function __construct()
     {
         try {
-            $this->conn = new PDO("mysql:host=localhost;dbname=taller_restaurante", "root", "");
+            $this->conn = new PDO("mysql:host=localhost;dbname=proyecto_2_db", "root", "");
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             die("Error de conexión: " . $e->getMessage());
