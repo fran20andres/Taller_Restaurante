@@ -1,16 +1,17 @@
+
 <?php
 // Incluir los archivos necesarios
 include '../../models/drivers/conexDB.php';
 include '../../models/entities/entity.php';
-include '../../models/entities/restaurantTables.php';  // Clase RestaurantTable
-include '../../controllers/restaurant_tablesController.php';  // Controlador de mesas
+include '../../models/entities/restaurant_tables.php';  // Incluir la clase Category
+include '../../controllers/restaurant_tablesController.php';  // Incluir el controlador de categorías
 
-use app\controllers\RestaurantTablesController; 
+use app\controllers\RestaurantTablesController;  // Usamos el controlador de categorías
 
 // Crear el controlador
-$controller = new RestaurantTablesController();  
+$controller = new RestaurantTablesController();
 
-// Verificamos si es guardar o actualizar
+// Verificamos si es un guardar o actualizar
 $result = empty($_POST['idInput'])
     ? $controller->saveNewTable($_POST)
     : $controller->updateTable($_POST);
@@ -27,14 +28,16 @@ $result = empty($_POST['idInput'])
 
 <body>
     <h1>Resultado de la operación</h1>
-    <?php if ($result): ?>
-        <p>Datos guardados correctamente.</p>
-    <?php else: ?>
-        <p>No se pudo guardar los datos.</p>
-    <?php endif; ?>
-    
-    <a href="../restaurant_tables.php">← Volver a la lista de mesas</a>
+    <?php
+    if ($result) {
+        echo '<p>Datos guardados correctamente</p>';
+    } else {
+        echo '<p>No se pudo guardar los datos</p>';
+    }
+    ?>
+    <a href="../restaurant_tables.php">Volver </a>
 </body>
 
 </html>
+
 

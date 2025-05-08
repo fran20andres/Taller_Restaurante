@@ -18,7 +18,7 @@ $tables = $table->all();
 <body>
     <h1>Mesas Registradas</h1>
 
-    <form action="../controllers/guardar_table.php" method="POST">
+    <form action="../views/acciones/guardar_table.php" method="POST">
         <label for="name">Nombre de la Mesa:</label>
         <input type="text" name="name" required>
         <button type="submit">Guardar</button>
