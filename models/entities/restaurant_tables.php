@@ -2,11 +2,11 @@
 
 namespace app\models\entities;
 
-require_once 'entity.php'; // Asegúrate que está en la misma carpeta
+require_once 'entity.php';
 
 class restaurant_tables extends Entity
 {
-    protected $table = 'tables';
+    protected $table = 'restaurant_tables';
     protected $attributes = [
         'id' => null,
         'name' => null

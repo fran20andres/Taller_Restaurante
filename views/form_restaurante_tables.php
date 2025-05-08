@@ -1,12 +1,16 @@
 <?php
+// No necesitas incluir nada aquí si solo vas a enviar los datos.
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <title>Formulario Mesa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Categoría</title>
 </head>
+
 <body>
     <h1>
         <?php echo empty($_GET['id']) ? 'Registrar Mesa' : 'Modificar Mesa'; ?>
@@ -25,6 +29,7 @@
             <button type="submit">Guardar</button>
         </div>
     </form>
-    <a href="tables.php">Volver</a>
+    <a href="restaurant_tables.php">Volver</a>
 </body>
+
 </html>

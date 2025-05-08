@@ -4,17 +4,33 @@ namespace app\controllers;
 
 use app\models\entities\restaurant_tables;
 
+
+
+class RestaurantTablesController
+{
+    public function saveNewTable($data)
+    {
+        return true;
+    }
+
+    public function updateTable($data)
+    {
+        return true;
+    }
+}
+
+
 class TablesController
 {
     public function queryAllTables()
     {
-        $table = new restaurant_tables();
+        $table = new  restaurant_tables();
         return $table->all();
     }
 
     public function saveNewTable($request)
     {
-        $table = new restaurant_tables();
+        $table = new  restaurant_tables();
         $table->set('name', $request['nombreInput']);
         return $table->save();
     }

@@ -40,7 +40,7 @@ $tables = $table->all();
                     <td><?= $t->get('name') ?></td>
                     <td>
                         <a href="editar_table.php?id=<?= $t->get('id') ?>">Editar</a> |
-                        <a href="../controllers/delete_table.php?id=<?= $t->get('id') ?>" 
+                        <a href="../acciones/delete_table.php?id=<?= $t->get('id') ?>" 
                            onclick="return confirm('¿Estás seguro que deseas eliminar esta mesa?');">
                            Eliminar
                         </a>

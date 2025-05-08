@@ -13,7 +13,7 @@ class ConexDB {
     }
 
     public function __construct() {
-        $this->conn = new mysqli("localhost", "root", "", "proyecto_2_db");
+        $this->conn = new mysqli("localhost", "root", "", "taller_restaurante");
         if ($this->conn->connect_error) {
             die("Error de conexión: " . $this->conn->connect_error);
         }
