@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use app\models\entities\table;
 
-class TablesController
+class tablesController
 {
     public function queryAllTables()
     {

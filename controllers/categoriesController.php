@@ -27,11 +27,5 @@ class CategoriesController
         $category->set('name', $request['nombreInput']);
         return $category->update();
     }
-
-    public function deleteCategory($id)
-    {
-        $category = new Category();
-        $category->set('id', $id);
-        return $category->delete();
-    }
+    
 }

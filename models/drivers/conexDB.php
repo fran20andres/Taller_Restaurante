@@ -5,15 +5,10 @@ namespace app\models\drivers;
 use mysqli;
 
 class conexDB {
-    private $conn;
-    
-    public function getConnection()
-    {
-        return $this->conn;
-    }
+    private $conn =null;
 
     public function __construct() {
-        $this->conn = new mysqli("localhost", "root", "", "taller_restaurante");
+        $this->conn = new mysqli("localhost", "root", "", "proyecto_2_db");
         mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
     }
 

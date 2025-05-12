@@ -2,9 +2,9 @@
 
 namespace app\models\entities;
 
-use app\models\drivers\ConexDB;
+use app\models\drivers\conexDB;
 
-class Category extends Entity
+class category extends entity
 {
     protected $id = null;
     protected $name = "";
@@ -12,12 +12,12 @@ class Category extends Entity
     public function all()
     {
         $sql = "SELECT * FROM categories";
-        $conex = new ConexDB();
+        $conex = new conexDB();
         $resultDb = $conex->execSQL($sql);
         $categories = [];
         if ($resultDb->num_rows > 0) {
             while ($rowDb = $resultDb->fetch_assoc()) {
-                $category = new Category();
+                $category = new category();
                 $category->set('id', $rowDb['id']);
                 $category->set('name', $rowDb['name']);
                 array_push($categories, $category);
@@ -30,7 +30,7 @@ class Category extends Entity
     public function save()
     {
         $sql = "INSERT INTO categories (name) VALUES ('" . $this->name . "')";
-        $conex = new ConexDB();
+        $conex = new conexDB();
         $resultDb = $conex->execSQL($sql);
         $conex->close();
         return $resultDb;
@@ -39,7 +39,7 @@ class Category extends Entity
     public function update()
     {
         $sql = "UPDATE categories SET name='" . $this->name . "' WHERE id=" . $this->id;
-        $conex = new ConexDB();
+        $conex = new conexDB();
         $resultDb = $conex->execSQL($sql);
         $conex->close();
         return $resultDb;
@@ -48,7 +48,7 @@ class Category extends Entity
     public function delete()
     {
         $sql = "DELETE FROM categories WHERE id=" . $this->id;
-        $conex = new ConexDB();
+        $conex = new conexDB();
         $resultDb = $conex->execSQL($sql);
         $conex->close();
         return $resultDb;

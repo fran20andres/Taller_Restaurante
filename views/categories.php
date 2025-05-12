@@ -8,6 +8,7 @@ use app\controllers\CategoriesController;
 
 $controller = new CategoriesController();
 $categories = $controller->queryAllCategories();
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -19,9 +20,10 @@ $categories = $controller->queryAllCategories();
 </head>
 
 <body>
-    <h1>Categorías</h1>
-    <br>
-    <a href="form_category.php">Crear</a>
+    <div>
+        <h1>Listado de Categorías</h1>
+        <a href="form_category.php">Crear</a>
+    </div>
     <table border="1">
         <thead>
             <tr>
@@ -37,14 +39,15 @@ $categories = $controller->queryAllCategories();
                 echo '  <td>' . $category->get('id') . '</td>';
                 echo '  <td>' . $category->get('name') . '</td>';
                 echo '  <td>';
-                echo '      <a href="form_category.php?id=' . $category->get('id') . '">Modificar</a> ';
-                echo '      <a href="acciones/deleteCategory.php?id=' . $category->get('id') . '">Eliminar</a>';
+                echo '      <a href="form/form_category.php?id=' . $category->get('id') . '">Modificar</a> ';
+                echo '      <a href="acciones/delete_Category.php?id=' . $category->get('id') . '">Eliminar</a>';
                 echo '  </td>';
                 echo '</tr>';
             }
             ?>
         </tbody>
     </table>
+    <br>
+    <a href="../index.php">Volver al inicio</a>
 </body>
-
 </html>

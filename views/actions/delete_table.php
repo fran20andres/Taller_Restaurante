@@ -9,8 +9,6 @@ use app\controllers\TablesController;
 $controller = new TablesController(); 
 $idTable = $_GET['id']; 
 
-$result = $controller->deleteTable($idTable); 
-$error = !$result;
 ?>
 
 <!DOCTYPE html> 
