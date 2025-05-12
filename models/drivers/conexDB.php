@@ -4,7 +4,7 @@ namespace app\models\drivers;
 
 use mysqli;
 
-class ConexDB {
+class conexDB {
     private $conn;
     
     public function getConnection()
@@ -14,9 +14,7 @@ class ConexDB {
 
     public function __construct() {
         $this->conn = new mysqli("localhost", "root", "", "taller_restaurante");
-        if ($this->conn->connect_error) {
-            die("Error de conexión: " . $this->conn->connect_error);
-        }
+        mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
     }
 
     public function execSQL($sql) {
