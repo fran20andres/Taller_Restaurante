@@ -37,7 +37,7 @@ $tables = $controller->queryAllTables();
                 echo '  <td>' . $t->get('name') . '</td>';
                 echo '  <td>';
                 echo '      <a href="form/form_table.php?id=' . $t->get('id') . '">Modificar</a> ';
-                echo '      <a href="acciones/delete_table.php?id=' . $t->get('id') . '">Eliminar</a>';
+                echo '      <a href="actions/delete_table.php?id=' . $t->get('id') . '">Eliminar</a>';
                 echo '  </td>';
                 echo '</tr>';
             }

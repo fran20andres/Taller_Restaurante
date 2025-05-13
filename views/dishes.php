@@ -1,13 +1,13 @@
 <?php
 include '../models/drivers/conexDB.php';
 include '../models/entities/entity.php';
-include '../models/entities/category.php';
-include '../controllers/categoriesController.php';
+include '../models/entities/dish.php';
+include '../controllers/dishesController.php';
 
-use app\controllers\CategoriesController;
+use app\controllers\dishesController;
 
-$controller = new CategoriesController();
-$categories = $controller->queryAllCategories();
+$controller = new dishesController();
+$categories = $controller->queryAllDishes();
 
 ?>
 <!DOCTYPE html>
@@ -16,13 +16,13 @@ $categories = $controller->queryAllCategories();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Categorías</title>
+    <title>Platos</title>
 </head>
 
 <body>
     <div>
-        <h1>Listado de Categorías</h1>
-        <a href="form/form_category.php">Crear</a>
+        <h1>Listado de Platos</h1>
+        <a href="form/form_SaveDish.php">Crear</a>
     </div>
     <br>
     <table border="1">
@@ -40,7 +40,7 @@ $categories = $controller->queryAllCategories();
                 echo '  <td>' . $category->get('id') . '</td>';
                 echo '  <td>' . $category->get('name') . '</td>';
                 echo '  <td>';
-                echo '      <a href="form/form_category.php?id=' . $category->get('id') . '">Modificar</a> ';
+                echo '      <a href="form/UpdateDish.php?id=' . $category->get('id') . '">Modificar</a> ';
                 echo '      <a href="actions/delete_category.php?id=' . $category->get('id') . '">Eliminar</a>';
                 echo '  </td>';
                 echo '</tr>';

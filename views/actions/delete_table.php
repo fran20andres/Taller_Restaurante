@@ -2,13 +2,12 @@
 include '../../models/drivers/conexDB.php'; 
 include '../../models/entities/entity.php'; 
 include '../../models/entities/table.php'; 
-include '../../controllers/tablesController.php'; 
+include '../../controllers/deleteController.php'; 
 
-use app\controllers\TablesController;
+use app\controllers\deleteController;
 
-$controller = new TablesController(); 
-$idTable = $_GET['id']; 
-
+$controller = new deleteController(); 
+$result = $controller->deleteTable($_GET['id'])
 ?>
 
 <!DOCTYPE html> 
@@ -19,14 +18,8 @@ $idTable = $_GET['id'];
 </head> 
 <body> 
     <h1>Resultado de la operación</h1> 
-    <?php 
-    if ($error) { 
-        echo '<p style="color:red;">No se pudo borrar la mesa porque tiene datos relacionados o se produjo un error.</p>'; 
-    } else { 
-        echo '<p style="color:green;">La mesa fue eliminada correctamente.</p>'; 
-    } 
-    ?> 
-    <a href="../tables_list.php">Volver a la lista de mesas</a>
+    <p><?= htmlspecialchars($result) ?></p> 
+    <a href="../tables.php">Volver</a>
 </body> 
 </html>
 

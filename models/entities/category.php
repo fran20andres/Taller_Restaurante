@@ -6,7 +6,7 @@ use app\models\drivers\conexDB;
 
 class category extends entity
 {
-    protected $id = null;
+    protected $idCategory = null;
     protected $name = "";
 
     public function all()
@@ -38,7 +38,7 @@ class category extends entity
 
     public function update()
     {
-        $sql = "UPDATE categories SET name='" . $this->name . "' WHERE id=" . $this->id;
+        $sql = "UPDATE categories SET name='" . $this->name . "' WHERE id=" . $this->idCategory;
         $conex = new conexDB();
         $resultDb = $conex->execSQL($sql);
         $conex->close();
@@ -47,7 +47,7 @@ class category extends entity
 
     public function delete()
     {
-        $sql = "DELETE FROM categories WHERE id=" . $this->id;
+        $sql = "DELETE FROM categories WHERE id=" . $this->idCategory;
         $conex = new conexDB();
         $resultDb = $conex->execSQL($sql);
         $conex->close();

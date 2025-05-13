@@ -23,7 +23,7 @@ class CategoriesController
     public function updateCategory($request)
     {
         $category = new Category();
-        $category->set('id', $request['idInput']);
+        $category->set('idCategory', $request['idInput']);
         $category->set('name', $request['nombreInput']);
         return $category->update();
     }

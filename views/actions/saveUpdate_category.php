@@ -6,10 +6,8 @@ include '../../models/entities/category.php';  // Incluir la clase Category
 include '../../controllers/categoriesController.php';  // Incluir el controlador de categorías
 
 use app\controllers\CategoriesController;  // Usamos el controlador de categorías
-
 // Crear el controlador
 $controller = new CategoriesController();
-
 // Verificamos si es un guardar o actualizar
 $result = empty($_POST['idInput'])
     ? $controller->saveNewCategory($_POST)

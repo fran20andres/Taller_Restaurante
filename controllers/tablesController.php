@@ -22,7 +22,7 @@ class tablesController
     public function updateTable($request)
     {
         $table = new table();
-        $table->set('id', $request['idInput']);
+        $table->set('idTable', $request['idInput']);
         $table->set('name', $request['nombreInput']);
         return $table->update();
     }
