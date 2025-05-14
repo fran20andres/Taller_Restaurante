@@ -7,7 +7,7 @@ include '../controllers/dishesController.php';
 use app\controllers\dishesController;
 
 $controller = new dishesController();
-$categories = $controller->queryAllDishes();
+$dishes = $controller->queryAllDishes();
 
 ?>
 <!DOCTYPE html>
@@ -29,19 +29,22 @@ $categories = $controller->queryAllDishes();
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Nombre</th>
-                <th>Acciones</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Category</th>
             </tr>
         </thead>
         <tbody>
             <?php
-            foreach ($categories as $category) {
+            foreach ($dishes as $dish) {
                 echo '<tr>';
-                echo '  <td>' . $category->get('id') . '</td>';
-                echo '  <td>' . $category->get('name') . '</td>';
+                echo '  <td>' . $dish->get('id') . '</td>';
+                echo '  <td>' . $dish->get('description') . '</td>';
+                echo '  <td>' . $dish->get('price') . '</td>';
+                echo '  <td>' . $dish->get('idCategory') . '</td>';
                 echo '  <td>';
-                echo '      <a href="form/UpdateDish.php?id=' . $category->get('id') . '">Modificar</a> ';
-                echo '      <a href="actions/delete_category.php?id=' . $category->get('id') . '">Eliminar</a>';
+                echo '      <a href="form/UpdateDish.php?id=' . $dish->get('id') . '">Modificar</a> ';
+                echo '      <a href="actions/delete_dish.php?id=' . $dish->get('id') . '">Eliminar</a>';
                 echo '  </td>';
                 echo '</tr>';
             }
