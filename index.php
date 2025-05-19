@@ -6,14 +6,15 @@
     <link rel="stylesheet" href="assets/css/index.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Bienvenido al Restaurante los Suculentos</h1>
-        <a href="views/categories.php" class="button">Ir a Categorías</a>
+    <div>
+        <h1>Bienvenido al Restaurante Suculentos</h1>
+        <a href="views/categories.php">Ir a Categorías</a>
         <br>
         <a href="views/tables.php">Ir a Mesas</a>
         <br>
         <a href="views/dishes.php">Ir a Platos</a>
         <br>
+        <a href="">Ir a ordenes</a>
     </div>
 </body>
 </html>

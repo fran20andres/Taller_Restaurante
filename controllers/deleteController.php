@@ -44,7 +44,7 @@ class deleteController{
         }
     }
 
-    public function deletedish($idDish){
+    public function deleteDish($idDish){
         $dish = new Dish();
         $dish->set('idDish', $idDish);
 

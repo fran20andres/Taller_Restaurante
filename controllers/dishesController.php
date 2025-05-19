@@ -14,7 +14,7 @@ class dishesController{
     
     public function saveNewDishes($request){
         $dish = new Dish();
-        $dish->set('description', $request['description']);
+        $dish->set('description', $request['descripcion']);
         $dish->set('price', $request['price']);
         $dish->set('idCategory', $request['idCategory']);
         return $dish->save();
@@ -22,10 +22,9 @@ class dishesController{
     
     public function updateDishes($request){
         $dish = new Dish();
-        $dish->set('idDish', $request['idDish']);
-        $dish->set('description', $request['description']);
+        $dish->set('idDish', $request['id']);
+        $dish->set('description', $request['descripcion']);
         $dish->set('price', $request['price']);
-        $dish->set('idCategory', $request['idCategory']);
         return $dish->update();
     }
 }

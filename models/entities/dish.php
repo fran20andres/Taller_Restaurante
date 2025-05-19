@@ -11,7 +11,7 @@ class Dish extends Entity{
     protected $idCategory = null;
 
     public function all(){
-        $sql = "select dishes.*, categories.name from dishes";
+        $sql = "select dishes.*, categories.name from dishes ";
         $sql .= "inner join categories on dishes.idCategory=categories.id";
         $conecction = new conexDB();
         $resultDB = $conecction->execSQL($sql);
@@ -22,7 +22,7 @@ class Dish extends Entity{
                 $dish->set('id', $rowDB['id']);
                 $dish->set('description', $rowDB['description']);
                 $dish->set('price', $rowDB['price']);
-                $dish->set('idCategory', $rowDB['idCategory']);
+                $dish->set('name', $rowDB['name']);
                 array_push($dishes,$dish);
             }
         }
@@ -31,7 +31,7 @@ class Dish extends Entity{
     }
 
     public function save(){
-        $sql = "insert into dishes (descripcion, price, idCategory) values";
+        $sql = "insert into dishes (description, price, idCategory) values";
         $sql .= "('" . $this->description . "','";
         $sql .= $this->price . "','";
         $sql .= $this->idCategory . "')";
@@ -53,7 +53,7 @@ class Dish extends Entity{
     }
 
     public function delete(){
-        $sql = "delete from dishes where id=" . $this->idCategory;
+        $sql = "delete from dishes where id=" . $this->idDish;
         $conecction = new conexDB();
         $resultDB = $conecction->execSQL($sql);
         $conecction->close();

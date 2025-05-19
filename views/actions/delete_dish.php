@@ -1,13 +1,13 @@
 <?php 
 include '../../models/drivers/conexDB.php'; 
 include '../../models/entities/entity.php'; 
-include '../../models/entities/table.php'; 
+include '../../models/entities/dish.php'; 
 include '../../controllers/deleteController.php'; 
 
 use app\controllers\deleteController;
 
 $controller = new deleteController(); 
-$result = $controller->deleteTable($_GET['id'])
+$result = $controller->deleteDish($_GET['id'])
 ?>
 
 <!DOCTYPE html> 
@@ -19,7 +19,7 @@ $result = $controller->deleteTable($_GET['id'])
 <body> 
     <h1>Resultado de la operación</h1> 
     <p><?php echo $result; ?></p>
-    <a href="../tables.php">Volver</a>
+    <a href="../dishes.php">Volver</a>
 </body> 
 </html>
 

@@ -18,7 +18,7 @@ $result = $controller->deleteCategory($_GET['id']);
 </head>
 <body>
     <h1>Resultado de la operación</h1>
-    <p><?= htmlspecialchars($result) ?></p> 
+    <p><?php echo $result; ?></p>
     <a href="../categories.php">Volver</a>
 </body>
 </html>
